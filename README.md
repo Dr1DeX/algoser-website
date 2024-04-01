@@ -2,3 +2,8 @@
 Algorithm and structures website
 
 # Under development
+
+# Stack: 
+Backend: Python, DRF, PostgresSQL, Redis, RabbitMQ, Nginx, Gunicorn
+Frontend: Next.js, TypeScript
+Frontend builder: webpack
