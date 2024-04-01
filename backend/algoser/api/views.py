@@ -1,7 +1,8 @@
-from rest_framework_simplejwt.views import TokenObtainPairView
+from api.serializers import PostsSerializer
+from posts.models import Posts
+from rest_framework import viewsets
 
-from api.serializers import MyTokenObtainPairSerializer
 
-
-class MyTokenObtainPairView(TokenObtainPairView):
-    serializer_class = MyTokenObtainPairSerializer
+class PostViewSet(viewsets.ModelViewSet):
+    serializer_class = PostsSerializer
+    queryset = Posts.objects.all()

@@ -1,12 +1,13 @@
-from rest_framework_simplejwt.serializers import TokenObtainSerializer
+from rest_framework import serializers
+from posts.models import Posts
 
 
-class MyTokenObtainPairSerializer(TokenObtainSerializer):
-    @classmethod
-    def get_token(cls, user):
-        token = super().get_token(user)
+class PostsSerializer(serializers.ModelSerializer):
 
-        token['username'] = user.username
-        token['email'] = user.email
+    def create(self, validated_data):
+        return Posts.objects.create(**validated_data)
 
-        return token
+    class Meta:
+        model = Posts
+        fields = ('author', 'category', 'title', 'text', 'update_date')
+
