@@ -3,6 +3,7 @@ from posts.models import Posts
 
 
 class PostsSerializer(serializers.ModelSerializer):
+    author = serializers.HiddenField(default=serializers.CurrentUserDefault())
 
     def create(self, validated_data):
         return Posts.objects.create(**validated_data)

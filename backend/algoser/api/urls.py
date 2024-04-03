@@ -5,11 +5,13 @@ from api import views
 
 app_name = 'api'
 
-router = DefaultRouter()
-router.register('posts', views.PostViewSet, basename='post')
+
 
 urlpatterns = [
     path('v1/token', TokenObtainPairView.as_view(), name='token_obtain'),
     path('v1/token/refresh', TokenRefreshView.as_view(), name='token_refresh'),
-    path('v1/', include(router.urls)),
+    path('v1/posts/', views.PostAPIList.as_view()),
+    path('v1/posts/create/', views.PostAPICreate.as_view()),
+    path('v1/post/<int:pk>/', views.PostAPIUpdate.as_view()),
+    path('v1/postdelete/<int:pk>/', views.PostsAPIDestroy.as_view()),
 ]
