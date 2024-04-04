@@ -1,0 +1,17 @@
+version: '3.3'
+services:
+  nginx:
+    restart: unless-stopped
+    container_name: dev_nginx
+    build:
+      context: .
+      dockerfile: ./Dockerfile.nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./backend/django_static:/app/backend/server/django_static
+      - ./backend/media:/app/backend/server/media
+      - ./nginx/development:/etc/nginx/conf.d
+
+volumes:
+  static_volume: {}
