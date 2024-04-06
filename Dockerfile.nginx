@@ -1,6 +1,6 @@
-FROM node:18.16.0-alpine as build
+FROM node:18.17.0-alpine as build
 
-WORKDIR /app/frontend/
+WORKDIR /app/frontend
 COPY ./frontend/package.json ./
 COPY ./frontend/package-lock.json ./
 RUN npm ci --silent
@@ -8,5 +8,8 @@ COPY ./frontend/ ./
 RUN npm run build
 
 FROM nginx:stable-alpine
-COPY --from=build /app/frontend/build /usr/share/nginx/html
+COPY --from=build --chown=nextjs:nodejs /app/frontend/.next /usr/share/nginx/html
+COPY --from=build /app/frontend/node_modules ./node_modules
+COPY --from=build /app/frontend/package.json ./package.json
+COPY --from=build /app/frontend/public ./public
 CMD ["nginx", "-g", "daemon off;"]

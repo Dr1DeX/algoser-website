@@ -9,8 +9,8 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./backend/django_static:/app/backend/server/django_static
-      - ./backend/media:/app/backend/server/media
+      - ./backend/algoser/django_static:/app/backend/algoser/server/django_static
+      - ./backend/algoser/media:/app/backend/algoser/server/media
       - ./nginx/development:/etc/nginx/conf.d
 
 volumes:

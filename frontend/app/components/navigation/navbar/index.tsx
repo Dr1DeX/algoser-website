@@ -6,11 +6,11 @@ import Search from "../search/searchBlock";
 
 const Navbar = () => {
     const [nav, setNav] = useState(false);
-    const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
+    const [isMobile, setIsMobile] = useState(typeof window !== 'undefined')
 
     useEffect(() => {
         const checkScreenWidth = () => {
-            setIsMobile(window.innerWidth < 768)
+            setIsMobile(typeof window !== 'undefined')
         };
 
         checkScreenWidth();
