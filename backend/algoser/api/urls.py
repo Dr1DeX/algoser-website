@@ -12,4 +12,5 @@ urlpatterns = [
     path('v1/posts/create/', views.PostAPICreate.as_view()),
     path('v1/post/<int:pk>/', views.PostAPIUpdate.as_view()),
     path('v1/postdelete/<int:pk>/', views.PostsAPIDestroy.as_view()),
+    path('v1/register', views.RegisterView.as_view()),
 ]
